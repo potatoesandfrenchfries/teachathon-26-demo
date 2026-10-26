@@ -1,0 +1,137 @@
+:root {
+  color-scheme: light;
+  --font-sans: 'Roboto', system-ui, 'Segoe UI', sans-serif;
+
+  --clr-bg: #f4f6f9;
+  --clr-surface: #ffffff;
+  --clr-text: #1a1d23;
+  --clr-text-muted: #667085;
+  --clr-border: #e3e7ee;
+
+  --clr-primary: #1976d2;
+  --clr-primary-dark: #104a83;
+  --clr-light-gray: #ddd;
+  --clr-dark-gray: #aaa;
+  --clr-darker-gray: #555;
+  --clr-primary-tint: #eaf1ff;
+
+  --clr-locked: #b5bac3;
+  --clr-locked-bg: #e7e9ee;
+
+  --clr-warning: #f5a524;
+  --clr-warning-dark: #b3760a;
+  --clr-warning-tint: #fff6e5;
+
+  --clr-success: #17b26a;
+  --clr-success-dark: #0c7a45;
+  --clr-success-tint: #e7f9f0;
+
+  --clr-danger: #e5484d;
+  --clr-danger-tint: #ffecec;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+
+  font-family: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+.btn {
+  line-height: inherit;
+  text-decoration: none;
+  background: var(--clr-primary);
+  color: white;
+  display: inline-block;
+  border-radius: 0.2em;
+  padding: 0.2rem 0.6em;
+  font-size: 1rem;
+  margin: 0 0.2em;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-inverted {
+  color: var(--clr-primary);
+  background: white;
+}
+
+.btn-inverted:hover {
+  color: var(--clr-primary-dark);
+}
+
+.btn-disabled,
+.btn[disabled] {
+  color: var(--clr-dark-gray);
+  background: var(--clr-light-gray);
+}
+
+.btn-inverted.btn-disabled,
+.btn-inverted.btn[disabled] {
+  color: var(--clr-dark-gray);
+  background: white;
+}
+
+.app-bar {
+  flex: 0;
+  background: var(--clr-primary);
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1em;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+  z-index: 20;
+}
+
+.app-bar > .app-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.app-bar-title,
+.app-bar-subtitle {
+  color: white;
+  font-weight: 500;
+  font-size: 1.3rem;
+  display: inline-block;
+  margin: 0;
+}
+
+.app-bar-subtitle {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 0.15rem;
+}

@@ -1,0 +1,37 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Backend and data (see PLAN.md section 3)
+.env
+*.db
+.venv
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+
+# Book PDFs, page images, caches and transcriptions stay local. Only gold labels are committed.
+data/*
+!data/gold/

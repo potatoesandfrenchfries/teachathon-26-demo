@@ -1,0 +1,228 @@
+import type { LevelData } from '../types'
+
+export const levels: LevelData[] = [
+  {
+    id: 'welcome',
+    worldId: 'foundations',
+    title: 'Getting Started',
+    summary: 'A gentle warm-up to get comfortable with the format.',
+    prerequisites: [],
+    questions: [
+      {
+        id: 'q1',
+        type: 'multiple-choice',
+        prompt: 'Which button do you press to check your answer?',
+        options: ['Submit', 'Delete', 'Ignore'],
+        answer: 'Submit',
+        hints: ["It's the primary action button below the answer field.", 'It starts with "S".'],
+      },
+      {
+        id: 'q2',
+        type: 'short-answer',
+        prompt: 'Type the word "quest" backwards.',
+        answer: 'tseuq',
+        hints: ['Read the letters right-to-left.', 'q-u-e-s-t reversed.'],
+      },
+    ],
+  },
+  {
+    id: 'naming-things',
+    worldId: 'foundations',
+    title: 'Words & Meaning',
+    summary: 'Practice matching words to their meanings.',
+    prerequisites: ['welcome'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'multiple-choice',
+        prompt: 'Which word means "a group of related items sharing a name"?',
+        options: ['Category', 'Outlier', 'Fragment'],
+        answer: 'Category',
+        hints: ['Think of how a library organizes books.'],
+      },
+      {
+        id: 'q2',
+        type: 'short-answer',
+        prompt: 'What is the opposite of "ancestor"?',
+        answer: 'descendant',
+        hints: ['Family trees branch in two directions.', 'Your children are your ___.'],
+      },
+    ],
+  },
+  {
+    id: 'data-types',
+    worldId: 'foundations',
+    title: 'Shapes & Categories',
+    summary: 'Sort things into the right buckets.',
+    prerequisites: ['welcome'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'multiple-choice',
+        prompt: 'Which of these is NOT like the others?',
+        options: ['Triangle', 'Square', 'Tuesday'],
+        answer: 'Tuesday',
+        hints: ['Two of these are shapes.'],
+      },
+      {
+        id: 'q2',
+        type: 'short-answer',
+        prompt: 'How many sides does a hexagon have?',
+        answer: '6',
+        hints: ['"Hex" is the clue.', 'Think of a stop sign... but two more sides.'],
+      },
+    ],
+  },
+  {
+    id: 'number-sense',
+    worldId: 'foundations',
+    title: 'Number Sense',
+    summary: 'A side quest of quick number tricks — optional, but handy later.',
+    prerequisites: ['welcome'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'multiple-choice',
+        prompt: 'Which of these numbers is prime?',
+        options: ['9', '11', '15'],
+        answer: '11',
+        hints: ['A prime number has exactly two divisors: 1 and itself.', '9 = 3x3, 15 = 3x5.'],
+      },
+      {
+        id: 'q2',
+        type: 'short-answer',
+        prompt: 'What is half of 50?',
+        answer: '25',
+        hints: ['Divide by 2.'],
+      },
+    ],
+  },
+  {
+    id: 'control-flow',
+    worldId: 'foundations',
+    title: 'Sequences & Order',
+    summary: 'Merge point: requires both Words & Meaning and Shapes & Categories.',
+    prerequisites: ['naming-things', 'data-types'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'short-answer',
+        prompt: 'What is the next number in the sequence: 2, 4, 6, 8, ?',
+        answer: '10',
+        hints: ['Each number increases by 2.'],
+      },
+      {
+        id: 'q2',
+        type: 'multiple-choice',
+        prompt: 'Which comes first if you are following alphabetical order?',
+        options: ['Mango', 'Apple', 'Zebra'],
+        answer: 'Apple',
+        hints: ['Look at the first letter of each word.'],
+      },
+    ],
+  },
+  {
+    id: 'patterns-intro',
+    worldId: 'logic',
+    title: 'Spot the Pattern',
+    summary: 'Optional context: the Number Sense side quest helps here, but is not required.',
+    prerequisites: ['control-flow'],
+    optionalPrerequisites: ['number-sense'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'short-answer',
+        prompt: 'Continue the pattern: A, C, E, G, ?',
+        answer: 'I',
+        hints: ['Skip one letter each time.', 'A(skip B)C(skip D)E(skip F)G(skip H)I'],
+      },
+      {
+        id: 'q2',
+        type: 'multiple-choice',
+        prompt: 'Which shape completes the pattern: Circle, Square, Circle, Square, ?',
+        options: ['Circle', 'Triangle', 'Square'],
+        answer: 'Circle',
+        hints: ['The pattern alternates between two shapes.'],
+      },
+    ],
+  },
+  {
+    id: 'puzzles',
+    worldId: 'logic',
+    title: 'Logic Puzzles',
+    summary: 'Put your deduction skills to the test.',
+    prerequisites: ['patterns-intro'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'short-answer',
+        prompt:
+          'Three friends: Alex, Bo, and Cam. Alex is taller than Bo. Cam is shorter than Bo. Who is the tallest?',
+        answer: 'Alex',
+        hints: ['Order them from what you know: Alex > Bo > Cam.'],
+      },
+      {
+        id: 'q2',
+        type: 'multiple-choice',
+        prompt: 'If all Zips are Zaps, and all Zaps are Zops, then all Zips are...',
+        options: ['Zops', 'Not Zops', 'Impossible to tell'],
+        answer: 'Zops',
+        hints: ['This is a chain: Zip -> Zap -> Zop.'],
+      },
+    ],
+  },
+  {
+    id: 'estimation',
+    worldId: 'logic',
+    title: 'Quick Estimation',
+    summary: 'A side quest for estimating fast — optional, but useful for the final challenge.',
+    prerequisites: ['patterns-intro'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'short-answer',
+        prompt: 'Roughly, how many days are in 10 weeks?',
+        answer: '70',
+        hints: ['A week has 7 days.', '10 x 7 = ?'],
+      },
+      {
+        id: 'q2',
+        type: 'multiple-choice',
+        prompt: 'Which is the best quick estimate for 29 x 31?',
+        options: ['900', '300', '3000'],
+        answer: '900',
+        hints: ['29 and 31 are both close to 30.', '30 x 30 = 900.'],
+      },
+    ],
+  },
+  {
+    id: 'final-challenge',
+    worldId: 'applied',
+    title: 'Final Challenge',
+    summary: 'Optional context: Quick Estimation is good background, but is not required.',
+    prerequisites: ['puzzles'],
+    optionalPrerequisites: ['estimation'],
+    questions: [
+      {
+        id: 'q1',
+        type: 'short-answer',
+        prompt: 'A clock shows 3:15. What is the angle between the hour and minute hands (in degrees, roughly)?',
+        answer: '7.5',
+        hints: [
+          'The hour hand moves a bit past the 3 by 15 minutes worth.',
+          'Each minute moves the hour hand 0.5 degrees; 15 minutes = 7.5 degrees.',
+        ],
+      },
+      {
+        id: 'q2',
+        type: 'multiple-choice',
+        prompt: 'Which strategy best solves a maze with no map?',
+        options: ['Always turn right (wall-following)', 'Guess randomly forever', 'Give up immediately'],
+        answer: 'Always turn right (wall-following)',
+        hints: ['Think of a classic maze-solving trick that follows a single wall.'],
+      },
+    ],
+  },
+]
+
+export const levelsById = new Map(levels.map((level) => [level.id, level]))

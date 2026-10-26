@@ -1,0 +1,276 @@
+.world-map {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.world-map__progress-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  color: #fff;
+}
+
+.world-map__progress-track {
+  width: 90px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.world-map__progress-fill {
+  height: 100%;
+  background: #fff;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.world-map__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 2rem;
+  background: var(--clr-surface);
+  border-bottom: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  z-index: 2;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+}
+
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend__swatch--locked {
+  background: var(--clr-locked-bg);
+  border: 2px solid var(--clr-locked);
+}
+
+.legend__swatch--available {
+  background: #fff;
+  border: 2px solid var(--clr-primary);
+}
+
+.legend__swatch--warning {
+  background: var(--clr-warning);
+}
+
+.legend__swatch--complete {
+  background: var(--clr-success);
+}
+
+.legend__edge {
+  width: 22px;
+  height: 0;
+  border-top: 2px dashed var(--clr-warning);
+  display: inline-block;
+}
+
+.world-map__canvas {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Level node */
+.level-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 140px;
+  cursor: pointer;
+}
+
+.level-node--locked {
+  cursor: not-allowed;
+}
+
+.level-node__circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-locked-bg);
+  color: var(--clr-locked);
+  border: 3px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.level-node:hover .level-node__circle {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: var(--shadow-md);
+}
+
+.level-node--locked:hover .level-node__circle {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.level-node--available .level-node__circle {
+  background: #fff;
+  color: var(--world-color, var(--clr-primary));
+  border-color: var(--world-color, var(--clr-primary));
+  animation: pulse-ring 2.4s ease-in-out infinite;
+}
+
+.level-node__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--world-color, var(--clr-primary));
+}
+
+.level-node--complete .level-node__circle {
+  background: var(--world-color, var(--clr-success));
+  color: #fff;
+  border-color: color-mix(in srgb, var(--world-color, var(--clr-success)) 70%, black);
+}
+
+.level-node--complete-warning .level-node__circle {
+  background: var(--clr-warning);
+  color: #fff;
+  border-color: var(--clr-warning-dark);
+}
+
+.level-node__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.25;
+  color: var(--clr-text);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.55rem;
+  box-shadow: var(--shadow-sm);
+  max-width: 100%;
+}
+
+.level-node--locked .level-node__label {
+  color: var(--clr-text-muted);
+}
+
+@keyframes pulse-ring {
+  0%,
+  100% {
+    box-shadow: var(--shadow-sm), 0 0 0 0 color-mix(in srgb, var(--world-color, var(--clr-primary)) 35%, transparent);
+  }
+  50% {
+    box-shadow: var(--shadow-sm), 0 0 0 8px transparent;
+  }
+}
+
+/* Connection handles are invisible on the student map and shown while editing. */
+.level-node .level-node__handle {
+  opacity: 0;
+}
+
+.level-node--editable .level-node__handle {
+  opacity: 1;
+  width: 22px;
+  height: 22px;
+  background: var(--clr-primary);
+  border: 2px solid #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.level-node--selected .level-node__circle {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--clr-primary) 35%, transparent);
+}
+
+.level-node__meta {
+  font-size: 0.7rem;
+  color: var(--clr-text-muted);
+  margin-top: -0.25rem;
+}
+
+.map-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 2rem;
+  font-size: 0.85rem;
+  background: var(--clr-warning-tint);
+  color: var(--clr-warning-dark);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.map-notice--info {
+  background: var(--clr-primary-tint);
+  color: var(--clr-primary-dark);
+}
+
+.map-notice a,
+.map-notice button {
+  color: inherit;
+  font-weight: 600;
+}
+
+.map-notice button {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.map-status {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  color: var(--clr-text-muted);
+}
+
+.node-info {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: min(320px, calc(100vw - 3rem));
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem 1.1rem;
+  z-index: 30;
+}
+
+.node-info h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+}
+
+.node-info p {
+  margin: 0.3rem 0;
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+}
